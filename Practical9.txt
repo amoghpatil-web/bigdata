@@ -1,3 +1,6 @@
+etc/catalog
+mysql
+
 docker compose up -d
 
 docker exec -it trino_coordinator trino
