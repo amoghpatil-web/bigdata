@@ -4,6 +4,9 @@ from pyspark.sql import SparkSession
 from delta import configure_spark_with_delta_pip
 from delta.tables import DeltaTable
 import shutil
+hadoop_home = os.path.join(os.getcwd(), "win_hadoop")
+hadoop_bin = os.path.join(hadoop_home, "bin")
+os.makedirs(hadoop_bin, exist_ok=True)
 
 builders = SparkSession.builder.appName("DeltaPractical") \
            .config("spark.sql.extensions", "io.delta.sql.DeltaSparkSessionExtension") \
