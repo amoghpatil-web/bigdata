@@ -1,0 +1,27 @@
+docker compose up -d
+
+docker exec -it trino_coordinator trino
+SHOW CATALOGS ;
+ SELECT * FROM mysql.university.students;
+
+ CREATE TABLE memory.default.grades (
+    ->     student_id INT,
+    ->     subject VARCHAR,
+    ->     marks INT
+    -> );
+    -> 
+    -> INSERT INTO memory.default.grades VALUES
+    -> (101, 'Big Data', 92),
+    -> (102, 'Cloud Computing', 88),
+    -> (103, 'Big Data', 79),
+    -> (104, 'Cloud Computing', 95);
+
+ELECT 
+    ->     s.student_id,
+    ->     s.student_name,
+    ->     s.department,
+    ->     g.subject,
+    ->     g.marks
+    -> FROM mysql.university.students s
+    -> JOIN memory.default.grades g
+    ->     ON s.student_id = g.student_id;
