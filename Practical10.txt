@@ -1,0 +1,37 @@
+docker compose up -d --build
+docker logs p10_consumer --tail 10
+docker exec -it p10_clickhouse clickhouse-client -q "SELECT * FROM default.live_metrics LIMIT 5"
+
+Open http://localhost:3000 in your browser.
+
+Log in with username admin and password admin (click Skip when asked to change password).
+
+Add ClickHouse Data Source:
+
+Click the top-left menu (☰) → Connections → Data sources → Add data source.
+
+Search for ClickHouse and select it.
+
+Set Server address to clickhouse and Server port to 9000 (Protocol: Native).
+
+Leave Username as default and Password empty.
+
+Scroll down and click Save & test → you should see a green "Data source is working" banner.
+
+Create the Real-time Chart:
+
+Click ☰ → Dashboards → New → New dashboard → Add visualization.
+
+Select ClickHouse as the data source.
+
+Switch the query editor from Query Builder to SQL Editor (top right of the query pane) and paste:
+
+SQL
+SELECT
+  event_time AS time,
+  city,
+  temperature
+FROM default.live_metrics
+ORDER BY event_time DESC
+LIMIT 100
+Click Run query — your live time-series line graph appears immediately.
