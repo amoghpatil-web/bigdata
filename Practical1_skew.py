@@ -1,3 +1,6 @@
+
+//in terminal run pip install pyspark
+
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, when, sum as _sum
 import time
