@@ -1,3 +1,7 @@
+//pip install confluent-kakfa[avro]
+//docker compose up -d
+
+
 from confluent_kafka import DeserializingConsumer
 from confluent_kafka.schema_registry import SchemaRegistryClient
 from confluent_kafka.schema_registry.avro import AvroDeserializer
